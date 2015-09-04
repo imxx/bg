@@ -17,7 +17,7 @@ BubbleShoot.Bubble = (function($){
 		};
 		this.animatePop = function(){
 			var top = type * that.getSprite().height();
-			that.getSprite().css(/*Modernizr.prefixed("transform") */"transform", "rotate("+ (Math.random() * 360) + "deg)");
+			that.getSprite().css(Modernizr.prefixed("transform"), "rotate("+ (Math.random() * 360) + "deg)");
 			setTimeout(function(){
 				that.getSprite().css("background-position", "-50px -" + top + "px");
 			}, 125);
