@@ -10,12 +10,16 @@
 			setTimeout(moveAll, 40);
 		var dx = Math.round(Math.random() * 10) - 5;
 		var dy = Math.round(Math.random() * 5) + 5;
+		if( this instanceof HTMLElement )
+			var elm = $(this);
+		else
+			var elm = this;
 		toMove.push({
-			elm: $(this),
+			elm: elm,
 			dx: dx,
 			dy: dy,
-			x: $(this).position().left,
-			y: $(this).position().top,
+			x: elm.position().left,
+			y: elm.position().top,
 			config: config
 		});
 	};

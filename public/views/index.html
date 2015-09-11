@@ -25,6 +25,10 @@
         	"js/bubble.js",
             "js/board.js",
             "js/collision-detector.js",
+            {
+                test: Modernizr.canvas,
+                yep: ["js/renderer.js", "js/sprite.js"]
+            },
         	{
         		load: "js/game.js",
         		complete: function(){
