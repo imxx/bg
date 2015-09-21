@@ -78,11 +78,11 @@ BubbleShoot.Game = (function($){
 		};
 		var clickGameScreen = function(e){
 			var angle = BubbleShoot.ui.getBubbleAngle(curBubble.getSprite(), e);
-			console.log("angle -->", angle);
+			var directedToBottom = angle > Math.PI/2;
 			var duration = 750;
 			var distance = 1000;
 			var collision = BubbleShoot.CollisionDetector.findIntersection(curBubble, board, angle);
-			if(collision){
+			if(collision && !directedToBottom){
 				var coords = collision.coords;
 				duration = Math.round(duration * collision.distToCollision / distance);
 				board.addBubble(curBubble, coords);

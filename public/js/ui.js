@@ -25,7 +25,6 @@ BubbleShoot.ui = (function($){
 			var boardLeft = 120;
 			var oppositeLeg = mouseCoords.x - bubbleCoords.left - boardLeft - pageCoords.left;
 			var adjacentLeg = bubbleCoords.top + gameCoords.top + pageCoords.top - mouseCoords.y;
-			console.log("OppositeLeg " + oppositeLeg + ", adjacentLeg " + adjacentLeg);
 			var angle = Math.atan( oppositeLeg / adjacentLeg );
 			if(mouseCoords.y > bubbleCoords.top + gameCoords.top + pageCoords.top){
 				angle += Math.PI;
@@ -102,7 +101,7 @@ BubbleShoot.ui = (function($){
 			var leftShift = soundTurned ? "-32" : "0";
 			$("#sound_switcher_img").css({
 				backgroundPosition: leftShift + "px 0",
-				backgroundImage: "url('/img/mute_volume_1234.png')"
+				backgroundImage: "url('/img/mute_volume_c.png')"
 			});
 		},
 		turnFullscreen: function(){
