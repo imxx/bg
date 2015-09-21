@@ -25,6 +25,7 @@
         	"js/bubble.js",
             "js/board.js",
             "js/collision-detector.js",
+            "js/sounds.js",
             {
                 test: Modernizr.canvas,
                 yep: ["js/renderer.js", "js/sprite.js"]
@@ -43,7 +44,25 @@
     </head>
     <body>
         <div id="page">
-        	<div id="top_bar"></div>
+        	<div id="top_bar">
+             <div id="top_level_box" class="top_bar_box">
+                 <div id="top_level_label">Level:</div>
+                 <div id="level">1</div>
+             </div> 
+             <div class="top_bar_box">
+                <div id="top_score_label">Score:</div>
+                <div id="score">0</div>
+             </div>
+             <div class="top_bar_box">
+                 <div class="top_score_label">High Score:</div>
+                 <div id="high_score">0</div>
+             </div>
+             <div id="sound_switcher" class="button">
+                <a href="#" title="Sound on/off">
+                    <div id="sound_switcher_img"></div>
+                </a>   
+             </div>
+            </div>
         	<div id="game">
         		<div id="board"></div>
                 <div id="bubbles_remaining"></div>
@@ -55,6 +74,22 @@
         		</div>
 	        	<div class="but_start_game button">New game</div>
 	        </div>
+            <div id="end_game" class="dialog">
+                <div id="end_game_message">
+                    <h2>Game Over</h2>
+                    <div id="final_score">
+                        <span>Final Score:</span>
+                        <span id="final_score_value"></span>
+                    </div>
+                    <div id="new_high_score">New High Score!</div>
+                    <div id="level_failed" class="level_failed">Level Failed!</div>
+                    <div id="level_complete" class="level_complete">Level Complete!</div>
+                </div>
+                <div class="but_start_game button">
+                    <span class="level_complete">Next Level</span>
+                    <span class="level_failed">New Game</span>
+                </div>
+            </div>
         </div>
     </body>
 </html>

@@ -121,3 +121,57 @@ body{
 	width: 1000px;
 	height: 620px;
 }
+
+.top_bar_box{
+	font-size: 24px;
+	line-height: 60px;
+	float: left;
+	margin-left: 20px;
+	width: 250px;
+}
+
+.top_bar_box div{
+	float: left;
+	margin-right: 20px;
+}
+
+#final_score{
+	margin: 26px 0;
+}
+
+#end_game_message span{
+	margin-right: 20px;
+	font-size: 24px;
+}
+
+#level_complete, #level_failed, #new_high_score{
+	font-size: 36px;
+	color: #fff;
+}
+
+
+
+#sound_switcher{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 40px;
+	height: 40px;
+	clip: rect(0px, 46px, auto, 0px);
+}
+
+#sound_switcher a{
+	height: 100%;
+}
+
+#sound_switcher_img{
+	height: 100%;
+	/* background-image: url("/img/mute_volume_123.png"); */
+	background-repeat: no-repeat;
+}
+
+#sound_switcher:hover{
+	background-color: #369;
+	border: 3px solid white;
+	border-radius: 15px;
+}
