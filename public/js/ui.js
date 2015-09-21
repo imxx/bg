@@ -21,11 +21,13 @@ BubbleShoot.ui = (function($){
 			var mouseCoords = ui.getMouseCoords(e);
 			var bubbleCoords = ui.getBubbleCoords(bubble);
 			var gameCoords = $("#game").position();
+			var pageCoords = $("#page").position();
 			var boardLeft = 120;
-			var angle = Math.atan(
-				(mouseCoords.x - bubbleCoords.left - boardLeft)/(bubbleCoords.top + gameCoords.top - mouseCoords.y)
-			);
-			if(mouseCoords.y > bubbleCoords.top + gameCoords.top){
+			var oppositeLeg = mouseCoords.x - bubbleCoords.left - boardLeft - pageCoords.left;
+			var adjacentLeg = bubbleCoords.top + gameCoords.top + pageCoords.top - mouseCoords.y;
+			console.log("OppositeLeg " + oppositeLeg + ", adjacentLeg " + adjacentLeg);
+			var angle = Math.atan( oppositeLeg / adjacentLeg );
+			if(mouseCoords.y > bubbleCoords.top + gameCoords.top + pageCoords.top){
 				angle += Math.PI;
 			}
 			return angle;
@@ -97,11 +99,29 @@ BubbleShoot.ui = (function($){
 			$("#level").text(level + 1);
 		},
 		setSoundIcon: function(soundTurned){
-			var leftShift = soundTurned ? "-42" : "0";
+			var leftShift = soundTurned ? "-32" : "0";
 			$("#sound_switcher_img").css({
 				backgroundPosition: leftShift + "px 0",
-				backgroundImage: "url('/img/mute_volume_123.png')"
+				backgroundImage: "url('/img/mute_volume_1234.png')"
 			});
+		},
+		turnFullscreen: function(){
+			if(document.body.requestFullscreen)
+				document.body.requestFullscreen();
+			else if(document.body.webkitRequestFullscreen)
+				document.body.webkitRequestFullscreen();
+			else if(document.body.mozRequestFullScreen)
+				document.body.mozRequestFullScreen();
+			else if(document.body.msRequestFullscreen)
+				document.body.msRequestFullscreen();
+		},
+		returnFromFullscreen: function(){
+			if(document.exitFullscreen)
+				document.requestFullscreen();
+			else if(document.webkitExitFullscreen)
+				document.webkitExitFullscreen();
+			else if(document.mozCancelFullScreen)
+				document.mozCancelFullScreen();
 		},
 		endGame: function(hasWon, score){
 			$("#game").unbind("click");

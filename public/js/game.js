@@ -13,6 +13,7 @@ BubbleShoot.Game = (function($){
 		var highScore = 0;
 		var requestAnimationID;
 		var soundTurned = true;
+		var fullScreenTurned = false;
 		this.init = function(){
 			if(BubbleShoot.Renderer){
 				BubbleShoot.Renderer.init(function(){
@@ -29,6 +30,7 @@ BubbleShoot.Game = (function($){
 					soundTurned = false;
 			}
 			$("#sound_switcher").on("click", turnSound);
+			$("#fullscreen_switcher").on("click", turnFullscreen);
 			BubbleShoot.ui.setSoundIcon(soundTurned);
 			BubbleShoot.ui.drawHighScore(highScore);
 		};
@@ -76,6 +78,7 @@ BubbleShoot.Game = (function($){
 		};
 		var clickGameScreen = function(e){
 			var angle = BubbleShoot.ui.getBubbleAngle(curBubble.getSprite(), e);
+			console.log("angle -->", angle);
 			var duration = 750;
 			var distance = 1000;
 			var collision = BubbleShoot.CollisionDetector.findIntersection(curBubble, board, angle);
@@ -185,6 +188,16 @@ BubbleShoot.Game = (function($){
 			if(window.localStorage)
 					localStorage.setItem("sound_turned", soundTurned);
 			BubbleShoot.ui.setSoundIcon(soundTurned);
+		};
+		var turnFullscreen = function(){
+			if(fullScreenTurned){
+				BubbleShoot.ui.returnFromFullscreen();
+				fullScreenTurned = false;
+			}
+			else{
+				BubbleShoot.ui.turnFullscreen();
+				fullScreenTurned = true;
+			}
 		};
 	};
 	window.requestAnimationFrame = Modernizr.prefixed("requestAnimationFrame", window) ||

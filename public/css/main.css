@@ -6,7 +6,7 @@ body{
 	left: 0;
 	top: 0;
 	width: 1000px;
-	height: 738;
+	height: 738px;
 }
 
 #top_bar{
@@ -151,28 +151,42 @@ body{
 
 
 
-#sound_switcher{
-	position: absolute;
+
+#settings_panel{
+	position:absolute;
 	right: 10px;
-	top: 10px;
-	width: 40px;
-	height: 40px;
-	clip: rect(0px, 46px, auto, 0px);
+	top: 12px;
 }
 
-#sound_switcher a{
+#settings_panel a{
 	height: 100%;
 	outline: 0;
 }
 
-#sound_switcher_img{
+.switcher{
+	float: right;
+	margin-left: 2px;
+	width: 32px;
+	height: 32px;
+	padding: 4px;
+}
+
+.switcher:hover{
+	background-color: #369;
+	border: 3px solid white;
+	border-radius: 15px;	
+}
+
+.switcher .img{
 	height: 100%;
-	/* background-image: url("/img/mute_volume_123.png"); */
 	background-repeat: no-repeat;
 }
 
-#sound_switcher:hover{
-	background-color: #369;
-	border: 3px solid white;
-	border-radius: 15px;
+#fullscreen_switcher_img{
+	background-image: url("/img/fullscreen_123.png");
+}
+
+:-webkit-full-screen #page{
+	position: relative;
+	margin: 0 auto;
 }
