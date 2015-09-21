@@ -162,6 +162,7 @@ body{
 
 #sound_switcher a{
 	height: 100%;
+	outline: 0;
 }
 
 #sound_switcher_img{
