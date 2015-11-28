@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 //app.use(express.static("public/css"));
 
 app.get("/", function(req, res){
-	res.render("index.html");
+	res.render(__dirname + "/index.html");
 });
 
 app.get("/leader_board", function(req, res){
