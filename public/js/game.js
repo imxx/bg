@@ -14,6 +14,9 @@ BubbleShoot.Game = (function($){
 		var requestAnimationID;
 		var soundTurned = true;
 		var fullScreenTurned = false;
+		var leaderBoardShowed = false;
+		var recordPosition = null;
+		var recordScore = 0;
 		this.init = function(){
 			if(BubbleShoot.Renderer){
 				BubbleShoot.Renderer.init(function(){
@@ -31,6 +34,10 @@ BubbleShoot.Game = (function($){
 			}
 			$("#sound_switcher").on("click", turnSound);
 			$("#fullscreen_switcher").on("click", turnFullscreen);
+			$("#leader_board_switcher").on("click", showList);
+			$("#close_leader_board").on("click", showList);
+			$("#close_adding_record_form").on("click", closeAddingRecordForm);
+			$("#send_player_name_button").on("click", addHighscoreEntry);
 			BubbleShoot.ui.setSoundIcon(soundTurned);
 			BubbleShoot.ui.drawHighScore(highScore);
 		};
@@ -163,6 +170,11 @@ BubbleShoot.Game = (function($){
 			});
 		};
 		var endGame = function(hasWon){
+			recordScore = score;
+			BubbleShoot.LeaderBoard.checkForHighness(score, function(position){
+				recordPosition = position;
+				BubbleShoot.ui.showAddingRecordForm(position);
+			});
 			if(score > highScore){
 				highScore = score;
 				$("#new_high_score").show();
@@ -199,6 +211,30 @@ BubbleShoot.Game = (function($){
 				fullScreenTurned = true;
 			}
 		};
+		var showList = function(){
+			if(leaderBoardShowed){
+				BubbleShoot.ui.hideLeaderBoard();
+				leaderBoardShowed = false;
+			}
+			else{
+				BubbleShoot.LeaderBoard.getLeaderList(function(list){
+					BubbleShoot.ui.showLeaderBoard(list);
+					leaderBoardShowed = true;
+				});
+			}
+		};
+		var closeAddingRecordForm = function(){
+			BubbleShoot.ui.closeAddingRecordForm();
+		};
+		var addHighscoreEntry = function(){
+			var name = BubbleShoot.ui.getPlayerName();
+			if(name == "") return;
+			var entry = { position: recordPosition, score: recordScore, name: BubbleShoot.ui.getPlayerName() }
+			BubbleShoot.LeaderBoard.addHighscoreEntry(entry, function(){
+				closeAddingRecordForm();
+			});
+		};
+
 	};
 	window.requestAnimationFrame = Modernizr.prefixed("requestAnimationFrame", window) ||
 										function(callback){ window.setTimeout(function(){ callback(); },40); };

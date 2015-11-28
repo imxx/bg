@@ -79,7 +79,7 @@ body{
 	margin: 20px 0 20px;
 }
 
-.but_start_game{
+.big_button{
 	position: absolute;
 	left: 100px;
 	top: 360px;
@@ -93,6 +93,26 @@ body{
 	line-height: 60px;
 	font-weight: bold;
 	text-shadow: 0px 1px 1px #f99;
+}
+
+.middle_button{
+	position: absolute;
+	left: 100px;
+	top: 270px;
+	height: 60px;
+	width: 200px;
+	background-color: #f00;
+	cursor: pointer;
+	border-radius: 15px;
+	border: 2px solid #f66;
+	font-size: 28px;
+	line-height: 60px;
+	font-weight: bold;
+	text-shadow: 0px 1px 1px #f99;
+}
+
+#close_leader_board{
+	top: 420px;
 }
 
 .but_start_game:hover{
@@ -186,7 +206,24 @@ body{
 	background-image: url("/img/fullscreen_c.png");
 }
 
+#leader_board_switcher_img{
+	background-image: url("/img/list.png");
+}
+
 :-webkit-full-screen #page{
 	position: relative;
 	margin: 0 auto;
+}
+
+
+#leader_board table{
+	list-style: decimal;
+	padding: 0;
+	text-align: left;
+	border-spacing: 15px 0;
+}
+
+
+#adding_record_form input{
+	font-size: 24px;
 }

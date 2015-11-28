@@ -26,6 +26,7 @@
             "js/board.js",
             "js/collision-detector.js",
             "js/sounds.js",
+            "js/leader-board.js",
             {
                 test: Modernizr.canvas,
                 yep: ["js/renderer.js", "js/sprite.js"]
@@ -69,6 +70,11 @@
                         <div id="sound_switcher_img" class="img"></div>
                     </a>   
                  </div>
+                 <div id="leader_board_switcher" class="button switcher">
+                     <a href="#" title="Leader board list">
+                        <div id="leader_board_switcher_img" class="img"></div>
+                    </a> 
+                 </div>
              </div>
              
             </div>
@@ -85,7 +91,7 @@
         		<div id="start_game_message">
         			<h2>Start a new game</h2>
         		</div>
-	        	<div class="but_start_game button">New game</div>
+	        	<div class="but_start_game big_button button">New game</div>
 	        </div>
 
             <div id="end_game" class="dialog">
@@ -99,9 +105,36 @@
                     <div id="level_failed" class="level_failed">Level Failed!</div>
                     <div id="level_complete" class="level_complete">Level Complete!</div>
                 </div>
-                <div class="but_start_game button">
+                <div class="but_start_game big_button button">
                     <span class="level_complete">Next Level</span>
                     <span class="level_failed">New Game</span>
+                </div>
+            </div>
+
+
+            <div id="leader_board" class="dialog">
+                <h1>Leader Board</h1>
+                <div id="leader_board_list">
+                    
+                </div>
+                <div id="close_leader_board" class="big_button button">
+                    <span>Close</span>
+                </div>
+            </div>
+
+            <div id="adding_record_form" class="dialog">
+                <h1>Congratulations!</h1>
+                <p>You have achieved a new record in leaderboard. You're at <span id="record_position"></span> position.</p>
+                <p>If you want for it be saved on the server please send us your name.</p>
+                <form>
+                    <input name="name" id="player_name_input"/>
+
+                    <div id="send_player_name_button" class="middle_button button">
+                        <span>Send</span>
+                    </div>
+                </form>
+                <div id="close_adding_record_form" class="big_button button">
+                    <div>Close</div>
                 </div>
             </div>
 

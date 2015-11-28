@@ -1,1 +1,1 @@
-[{"name":"john","score":"205300","position":"0"},{"name":"georgy","score":"2057"},{"name":"Boris","highScore":999},{"name":"Pitr","highScore":1000},{"score":"2000"},{"name":"georg","score":"2001"},{"name":"georgy","score":"2056"},{"name":"Aleksandr","highScore":1100}]
+[{"score":"1400","name":"123"}]

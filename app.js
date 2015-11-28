@@ -17,20 +17,23 @@ app.get("/", function(req, res){
 
 app.get("/leader_board", function(req, res){
 	leaderBoard.getBoard(function(board){
+		console.log("Parse Worked");
 		res.send(board);
 	});
 });
 
 app.post("/check_for_highness", function(req, res){
 	leaderBoard.checkForHighness(req.body.score, function(position){
-		res.send({ message: "High enough", status: true });
+		res.send({ message: "High enough", status: true, position: position });
 	}, function(){
 		res.send({ message: "Not high enough", status: false });
 	});
 });
 
 app.post("/add_high_score_entry", function(req, res){
-	leaderBoard.putInPosition(req.body, req.body.position, function(){
+	var position = req.body.position;
+	delete req.body.position;
+	leaderBoard.putInPosition(req.body, position, function(){
 		res.send({ message: "Record was made", status: true });
 	});
 });

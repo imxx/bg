@@ -122,6 +122,29 @@ BubbleShoot.ui = (function($){
 			else if(document.mozCancelFullScreen)
 				document.mozCancelFullScreen();
 		},
+		showLeaderBoard: function(list){
+			var $table = $(document.createElement("table"));
+			for(var i = 0; i < list.length; i++){
+				var number = $(document.createElement("td")).text( (i + 1) + ".");
+				var name = $(document.createElement("td")).text(list[i].name);
+				var score = $(document.createElement("td")).text(list[i].score);
+				$table.append( $(document.createElement("tr")).append(number).append(name).append(score) );
+			}
+			$("#leader_board_list").append($table);
+			$("#leader_board").fadeIn(500);
+		},
+		hideLeaderBoard: function(){
+			$("#leader_board_list").empty();
+			$("#leader_board").fadeOut(500);
+		},
+		showAddingRecordForm: function(position){
+			$("#record_position").text(position + 1);
+			$("#player_name_input").val("");
+			$("#adding_record_form").fadeIn(500);
+		},
+		closeAddingRecordForm: function(){
+			$("#adding_record_form").fadeOut(500);
+		},
 		endGame: function(hasWon, score){
 			$("#game").unbind("click");
 			BubbleShoot.ui.drawBubblesRemaining(0);
@@ -134,6 +157,9 @@ BubbleShoot.ui = (function($){
 			}
 			$("#end_game").fadeIn(500);
 			$("#final_score_value").text(score);
+		},
+		getPlayerName: function(){
+			return $("#player_name_input").val();
 		}
 	};
 	return ui;
